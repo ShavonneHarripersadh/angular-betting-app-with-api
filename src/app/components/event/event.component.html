@@ -1,0 +1,49 @@
+<h1>
+  Events
+</h1>
+<div>
+  <table class="table table-bordered col-6 border border-danger">
+    <tr>
+      <td>
+        <label><b>Add Event</b></label></td>
+      <td>
+        <input type="text" class="text" placeholder="Enter Event Name.." #newEvent>
+      </td>
+      <td>
+        <select type="number" [(ngModel)]="sportID" (ngModelChange)="sportToNumber()">
+            <option *ngFor="let sport of sports" [ngValue]="sport.sportID">{{sport.sportName}}</option>
+          </select>          
+    </td>
+      <td>
+          <select type="number" [(ngModel)]="countryID" (ngModelChange)="countryToNumber()">
+              <option *ngFor="let country of countriesTemp" [ngValue]="country.countryID">{{country.countryName}}</option>
+            </select>
+      </td>
+      <td>
+        <select type="number" [(ngModel)]="tourID" (ngModelChange)="tourToNumber()">
+            <option *ngFor="let tour of tourTemp" [ngValue]="tour.tournamentID">{{tour.tournamentName}}</option>
+          </select>
+    </td>
+      <td>
+        <button class="btn btn-success" (click)="AddEvent(newEvent.value, tourID);">Save </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<table *ngFor="let event of events" class="table table-bordered col-3">
+  <tr>
+    <td class="col-1">{{event.eventName}}</td>
+    <td class="col-2"><button (click)="removeEvent(event);" class="btn btn-danger">Delete</button></td>
+
+    <td class="col-3"><button class="btn btn-secondary" (click)="setEdit(event)">Edit</button></td>
+    <div *ngIf="event.isEdit">
+      <td>
+
+        <input type="text" class="text" placeholder="Edit" #newEvent>
+        <button class="btn btn-success" (click)=" EditEvent(event, newEvent.value);">Update </button>
+
+      </td>
+    </div>
+  </tr>
+</table>

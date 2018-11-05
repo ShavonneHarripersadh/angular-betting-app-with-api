@@ -1,0 +1,47 @@
+<h1>
+  Sports
+</h1>
+<div id="responsecontainer">
+<div>
+  <table>
+    <tr>
+      <td>
+        <label><b>Add Sport</b></label></td>
+      <td>
+        <input type="text" class="text" placeholder="Enter Sport Name.." #newSport>
+      </td>
+      <td>
+        <button class="btn btn-success" (click)="AddSports(newSport.value);">Save </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<table *ngFor="let sport of sports" class="table table-bordered col-3">
+ 
+  <tr>
+    <td class="col-4">{{sport.sportName}}</td>
+    <td><button (click)="removeSport(sport);" class="btn btn-danger">Delete</button></td>
+
+    <td><button class="btn btn-secondary" (click)="setEdit(sport)">Edit</button></td>
+    <div *ngIf="sport.isEdit">
+      <td class="col-12">
+
+        <input type="text" class="text" placeholder="Edit" #newSport>
+        <button class="btn btn-success" (click)=" EditSport(sport, newSport.value);">Update </button>
+
+      </td>
+    </div>
+  </tr>
+</table>
+</div>
+
+<script>
+    $(document).ready(function() {
+       $("#responsecontainer").load("YourScript.php");
+      var refreshId = setInterval(function() {
+         $("#responsecontainer").load('YourScript.php');
+      }, 9000);
+      $.ajaxSetup({ cache: false });
+   });
+   </script>

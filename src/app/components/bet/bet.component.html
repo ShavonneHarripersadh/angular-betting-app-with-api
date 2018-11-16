@@ -1,0 +1,73 @@
+<h1>
+  Markets
+</h1>
+<div>
+  <table class="table table-bordered col-6 border border-danger">
+    <tr>
+      <td>
+        <label><b>Add Market</b></label></td>
+      <td>
+        <input type="text" class="text" placeholder="Enter Market Name.." #newEvent>
+      </td>
+      <td>
+        <select type="number" [(ngModel)]="sportID" (ngModelChange)="sportToNumber()">
+            <option *ngFor="let sport of sports" [ngValue]="sport.sportID">{{sport.sportName}}</option>
+          </select>          
+    </td>
+      <td>
+          <select type="number" [(ngModel)]="countryID" (ngModelChange)="countryToNumber()">
+              <option *ngFor="let country of countriesTemp" [ngValue]="country.countryID">{{country.countryName}}</option>
+            </select>
+      </td>
+      <td>
+        <select type="number" [(ngModel)]="tourID" (ngModelChange)="tourToNumber()">
+            <option *ngFor="let tour of tourTemp" [ngValue]="tour.tournamentID">{{tour.tournamentName}}</option>
+          </select>
+    </td>
+    <td>
+      <select type="number" [(ngModel)]="eventID" (ngModelChange)="eventToNumber()">
+          <option *ngFor="let event of eventsTemp" [ngValue]="event.eventID">{{event.eventName}}</option>
+        </select>
+  </td>
+  <td>
+    <select type="number" [(ngModel)]="marketID" (ngModelChange)="marketToNumber()">
+        <option *ngFor="let market of marketTemp" [ngValue]="market.marketID">{{market.marketName}}</option>
+      </select>
+</td>
+    </tr>
+<tr>
+    <td>
+        <input type="number" class="text" placeholder="Enter Home Win Odds Name.." #newpOne>
+      </td>
+      <td>
+          <input type="number" class="text" placeholder="Enter Draw odds.." #draw>
+        </td>
+        <td>
+            <input type="number" class="text" placeholder="Enter AwayWIn odds Name.." #newpTwo>
+          </td>
+      <td>
+        <button class="btn btn-success" (click)="AddBet(newEvent.value, newpOne.value, draw.value, newpTwo.value, marketID);">Save </button>
+      </td>
+
+    </tr>
+  </table>
+</div>
+
+<table *ngFor="let bet of bets" class="table table-bordered col-3">
+  <tr>
+    <td class="col-1">{{bet.description}}</td>
+    <td class="col-1">Home Win - {{bet.priceOne}}</td>
+    <td class="col-1">Draw - {{bet.draw}}</td>
+    <td class="col-1">Away win -{{bet.priceTwo}}</td>
+    <td class="col-2"><button (click)="removeBet(bet);" class="btn btn-danger">Delete</button></td>
+    <td class="col-3"><button class="btn btn-secondary" (click)="bet.isEdit = !bet.isEdit;">Edit</button></td>
+    <div *ngIf="bet.isEdit">
+      <td>
+
+        <input type="text" class="text" placeholder="Edit" #newEvent>
+        <button class="btn btn-success" (click)=" EditBet(bet, newEvent.value);">Update </button>
+
+      </td>
+    </div>
+  </tr>
+</table>

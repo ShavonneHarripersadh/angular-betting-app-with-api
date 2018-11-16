@@ -15,7 +15,7 @@ const httpOptions = {
 )
 export class SportService {
   sports:Sport[];
-  sportUrl: string = 'http://localhost:61591/api/sport';
+  sportUrl: string = 'http://10.1.0.129:63410/api/sport';
   constructor(private http: HttpClient) {}
 
   getAllSports(): Observable<Sport[]> {

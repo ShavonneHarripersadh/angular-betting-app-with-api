@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class EventService {
 events:Event[];
-eventUrl: string = 'http://localhost:61591/api/event';
+eventUrl: string = 'http://10.1.0.129:63410/api/event';
 
   constructor(private http: HttpClient) { }
 

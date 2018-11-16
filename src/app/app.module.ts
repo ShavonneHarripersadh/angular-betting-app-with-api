@@ -14,6 +14,10 @@ import { TournamentComponent } from './components/tournament/tournament.componen
 import { TournamentService } from './services/tournament.service';
 import { EventComponent } from './components/event/event.component';
 import { EventService } from './services/event.service';
+import { MarketComponent } from './components/market/market.component';
+import { MarketService } from './services/market.service';
+import { BetComponent } from './components/bet/bet.component';
+import { BetService } from './services/bet-type.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { EventService } from './services/event.service';
     HomeComponent,
     CountryComponent,
     TournamentComponent,
-    EventComponent
+    EventComponent,
+    MarketComponent,
+    BetComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,7 @@ import { EventService } from './services/event.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [SportService, CountryService, TournamentService, EventService],
+  providers: [SportService, CountryService, TournamentService, EventService,MarketService, BetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class CountryService {
   countries:Country[];
-  countryUrl: string = 'http://localhost:61591/api/country';
+  countryUrl: string = 'http://10.1.0.129:63410/api/country';
   constructor(private http: HttpClient) { }
 
   getAllCountries(): Observable<Country[]> {

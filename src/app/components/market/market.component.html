@@ -1,13 +1,13 @@
 <h1>
-  Events
+  Bet Type
 </h1>
 <div>
   <table class="table table-bordered col-6 border border-danger">
     <tr>
       <td>
-        <label><b>Add Event</b></label></td>
+        <label><b>Add Bet Type</b></label></td>
       <td>
-        <input type="text" class="text" placeholder="Enter Event Name.." #newEvent>
+        <input type="text" class="text" placeholder="Enter Bet Type Name.." #newEvent>
       </td>
       <td>
         <select type="number" [(ngModel)]="sportID" (ngModelChange)="sportToNumber()">
@@ -24,24 +24,29 @@
             <option *ngFor="let tour of tourTemp" [ngValue]="tour.tournamentID">{{tour.tournamentName}}</option>
           </select>
     </td>
+    <td>
+      <select type="number" [(ngModel)]="eventID" (ngModelChange)="eventToNumber()">
+          <option *ngFor="let event of eventsTemp" [ngValue]="event.eventID">{{event.eventName}}</option>
+        </select>
+  </td>
       <td>
-        <button class="btn btn-success" (click)="AddEvent(newEvent.value, tourID);">Save </button>
+        <button class="btn btn-success" (click)="AddMarket(newEvent.value, eventID);">Save </button>
       </td>
     </tr>
   </table>
 </div>
 
-<table *ngFor="let event of events" class="table table-bordered col-3">
+<table *ngFor="let market of markets" class="table table-bordered col-3">
   <tr>
-    <td class="col-1">{{event.eventName}}</td>
-    <td class="col-2"><button (click)="removeEvent(event);" class="btn btn-danger">Delete</button></td>
+    <td class="col-1">{{market.marketName}}</td>
+    <td class="col-2"><button (click)="removeMarket(market);" class="btn btn-danger">Delete</button></td>
 
-    <td class="col-3"><button class="btn btn-secondary" (click)="event.isEdit = !event.isEdit;">Edit</button></td>
-    <div *ngIf="event.isEdit">
+    <td class="col-3"><button class="btn btn-secondary" (click)="market.isEdit = !market.isEdit;">Edit</button></td>
+    <div *ngIf="market.isEdit">
       <td>
 
         <input type="text" class="text" placeholder="Edit" #newEvent>
-        <button class="btn btn-success" (click)=" EditEvent(event, newEvent.value);">Update </button>
+        <button class="btn btn-success" (click)=" EditMarket(market, newEvent.value);">Update </button>
 
       </td>
     </div>

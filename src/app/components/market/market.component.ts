@@ -7,15 +7,17 @@ import { Sport } from '../../models/Sport';
 import { Event } from '../../models/Event';
 import { Tournament } from 'src/app/models/Tournament';
 import { SportService } from 'src/app/services/sport.service';
+import { Market } from 'src/app/models/Market';
+import { MarketService } from 'src/app/services/market.service';
 import { EventService } from 'src/app/services/event.service';
 
-
 @Component({
-  selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  selector: 'app-market',
+  templateUrl: './market.component.html',
+  styleUrls: ['./market.component.css']
 })
-export class EventComponent implements OnInit {
+export class MarketComponent implements OnInit {
+  markets:Market[];
   events:Event[];
   tournaments: Tournament[];
   tourTemp: Tournament[];
@@ -25,15 +27,18 @@ export class EventComponent implements OnInit {
   sports:Sport[];
   sportID:number;
   tourID:number;
+  eventID:number;
   event:Event;
+  eventsTemp:Event[];
   isEdit: boolean = false;
 
 
-  constructor(private eventService:EventService,private tourService:TournamentService, private countryService:CountryService, private sportService:SportService) { 
+  constructor(private marketService:MarketService,private eventService:EventService,private tourService:TournamentService, private countryService:CountryService, private sportService:SportService) { 
     this.getAllCountries();
     this.getAllEvents();
     this.getAllSports();
     this.getAllTournaments();
+    this.getAllMarkets();
   }
 
   ngOnInit() {
@@ -53,6 +58,10 @@ export class EventComponent implements OnInit {
 
   getAllTournaments():void{
     this.tourService.getAllTours().subscribe(tournaments=> this.tournaments=tournaments);
+  }
+
+  getAllMarkets():void{
+    this.marketService.getAllMarket().subscribe(markets=>this.markets=markets)
   }
 
   sportToNumber(){    
@@ -76,7 +85,25 @@ export class EventComponent implements OnInit {
     
     this.tourID = +this.tourID;
     console.log(this.tourID);
+
+    this.eventsTemp=[];
+    for (var v=0; v< this.events.length;v++) {
+      
+      console.log(v);
+      if(this.events[v].tournamentID== this.tourID)
+      {
+        this.eventsTemp.push(this.events[v]);
+        
+      }
+      
+    }
     
+  }
+
+  eventToNumber()
+  {
+    this.eventID=+this.eventID;
+    console.log(this.eventID);
   }
 
   countryToNumber(){    
@@ -96,26 +123,26 @@ export class EventComponent implements OnInit {
     }
   }
 
-  AddEvent(eventName: string, tourID:number): void {
-    console.log(tourID);
-    var eventOne: Event = { eventID: 0, eventName: eventName, tournamentID : tourID,  isEdit: false };
+  AddMarket(marketName: string, eventID:number): void {
+    console.log(eventID);
+    var marketOne: Market = { marketID: 0, marketName: marketName, eventID : eventID,  isEdit: false };
     
-    this.eventService.addEvent((eventOne) as Event).subscribe((event:Event)=> this.events.push(eventOne));
+    this.marketService.addMarket((marketOne) as Market).subscribe((market:Market)=> this.markets.push(marketOne));
     
   }
 
-  removeEvent(event: Event): void {
-    console.log(event);
-    if(confirm("Do you want to delete" + event.eventName))
+  removeMarket(market: Market): void {
+    console.log(market);
+    if(confirm("Do you want to delete" + market.marketName))
     {
-      this.eventService.DeleteEvent(event).subscribe((event:Event[])=> this.events= event);
+      this.marketService.DeleteMarket(market).subscribe((market:Market[])=> this.markets= market);
     }
     
   }
 
-  EditEvent(event: Event, newName: string): void {
-    event.eventName = newName;
-    this.eventService.UpdateEvent((event) as Event).subscribe();
+  EditMarket(market: Market, newName: string): void {
+    market.marketName = newName;
+    this.marketService.UpdateMarket((market) as Market).subscribe();
     
   }
   setEdit(event: Event): void {

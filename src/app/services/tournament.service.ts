@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class TournamentService {
   tours:Tournament[];
-  tourUrl: string = 'http://localhost:61591/api/tournament';
+  tourUrl: string = 'http://10.1.0.129:63410/api/tournament';
 
   constructor(private http: HttpClient) { }
 

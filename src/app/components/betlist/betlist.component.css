@@ -1,0 +1,59 @@
+
+.body{
+    background-color: grey;
+}
+.container-fluid{
+    height: 100vh;
+    width: 100vw;
+    background-color: grey;
+}
+.nav{
+    background-color: dodgerblue;
+    border-block-start-color: dodgerblue;
+    -webkit-text-fill-color: black;
+}
+
+
+
+.nav-item{
+    background-color: dodgerblue;
+    -webkit-text-fill-color: black;
+}
+
+.market{
+    background-color:grey;
+    border-block-start-color: black;
+}
+
+#sidebar{
+    padding-top: 20px;
+    background-color: grey;
+    position: relative;
+    display: block;
+}
+
+#log{
+   
+     top:0;     
+    position: absolute;
+    right:0;
+}
+
+#textcolor{
+    -webkit-text-fill-color: black;
+}
+
+#login{
+    -webkit-text-fill-color: white;
+}
+
+#white{
+    top:0;     
+    position: absolute;
+    right:0;
+    -webkit-text-fill-color: white;
+}
+
+.market{
+    position: relative;
+}

@@ -1,0 +1,136 @@
+<div class="container-fluid ">
+  <div class="row h-100">
+    <div class="col-1.7 collapse d-md-flex d-md-block bg-light pt-2 h-100" id="sidebar">
+      <ul class="nav flex-column flex-nowrap">
+        <div *ngFor="let sport of sports;let i=index">
+          <li class="nav-item">
+            <a (click)="countryList(i,sport.sportID)" class="btn btn-primary nav-link collapsed" href="#submenu1"
+              data-toggle="collapse" data-target="#submenu1"><b>{{sport.sportName}}</b></a>
+            <div class="collapse" id="submenu1" aria-expanded="false">
+              <div *ngFor="let country of countriesTemp;let j=index">
+                <ul class="flex-column pl-2 nav">
+                  <div *ngIf="sport.sportID==country.sportID">
+                    <li class="nav-item">
+                      <a (click)="tourList(j,country.countryID)" class="btn btn-primary nav-link collapsed py-1" href="#submenu1sub1"
+                        data-toggle="collapse" data-target="#submenu1sub1"><b>{{country.countryName}}</b></a>
+                      <div *ngFor="let tour of tourTemp; let k = index">
+                        <div class="collapse" id="submenu1sub1" aria-expanded="false">
+                          <ul class="flex-column nav pl-4">
+                            <div *ngIf="country.countryID==tour.countryID">
+                              <li class="nav-item">
+                                <a (click)="eventList(k,tour.tournamentID)" class="btn btn-primary nav-link p-1" href="#">
+                                  <i class="fa fa-fw fa-clock-o"></i> <b>{{tour.tournamentName}}</b>
+                                </a>
+                                <div class="collapse" id="submenu1sub1" aria-expanded="false">
+                                  <div *ngFor="let event of eventsTemp; let z = index">
+                                    <ul class="flex-column nav pl-4">
+                                      <div *ngIf="tour.tournamentID==event.tournamentID">
+                                        <li class="nav-item">
+                                          <a (click)="marketList(z,event.eventID)" class="btn btn-primary nav-link p-1"
+                                            href="#">
+                                            <i class="fa fa-fw fa-clock-o"></i> <b>{{event.eventName}}</b>
+                                          </a>
+                                        </li>
+                                      </div>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </li>
+                            </div>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+    <div *ngIf="!isLogin" id="log">
+      <table>
+        <td>
+          <label id="login"><b>Login<br></b></label></td>
+        <td>
+          <input type="text" class="text" id="textcolor" placeholder="Enter Username Name.." #username>
+        </td>
+        <td>
+          <input type="password" class="text" id="textcolor" placeholder="Enter password.." #password>
+        </td>
+        <td>
+          <button class="btn btn-success" id="textcolor" (click)="Login(username.value, password.value)">Login </button>
+        </td>
+        <td>
+          <button class="btn btn-success" id="textcolor" (click)="create=true; isLogin=!isLogin">Register</button>
+        </td>
+      </table>
+    </div>
+
+    <div *ngIf="create" id="log">
+      <table>
+        <td>
+          <label><b>Create Account</b></label></td>
+        <td>
+          <input type="text" class="text" placeholder="Enter Username Name.." #username>
+        </td>
+        <td>
+          <input type="password" class="text" placeholder="Enter password.." #password>
+        </td>
+        <td>
+          <button class="btn btn-success" (click)="AddUser(username.value, password.value)">Create Account </button>
+        </td>
+      </table>
+    </div>
+
+     <div *ngIf="isLogin && !create" id="white">
+      <table>
+        <td>
+          <label><b> Logged in as: {{userDetail.username}}</b></label></td>
+        <td>
+          <td><b>Balance : R{{userDetail.balance}}</b></td>
+          <td><button class="btn btn-success" (click)="logout()">Logout</button></td>
+      </table>
+    </div> 
+
+    <div class="market col-4">
+      <table *ngFor="let market of marketsTemp; let a = index" class="table table-dark col-3">
+        <tr>
+          <td class="col-4">{{market.marketName}}
+          </td>
+          <td><button (click)="betList(a, market.marketID)" role="button" class="btn btn-success">Markets</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-4">
+      <table class="table table-dark col-3">
+        <tr>
+          <th>Markets</th>         
+
+          <div *ngFor="let bet of betsTemp; let i=index">
+        <tr>
+
+          <td class="col-4">{{bet.description}}           
+          </td>
+
+          <td class="col-3">Odds - {{bet.priceOne}}
+              <ul>
+                  <li><button (click)="AddStake(bet.priceOne, bet.betTypeID)" class="btn btn-success">Take Bet</button></li>
+                </ul>
+                <div *ngIf="enterStake && betID==bet.betTypeID">
+                    <input type="number" class="text" placeholder="Enter Stake" #stake>
+                    <a class="btn btn-success" (click)=" AddBet(stake.value);">Done </a>
+                </div>
+          </td>
+        
+        </tr>
+    </div>
+    </table>
+  </div>
+
+</div>
+
+</div>

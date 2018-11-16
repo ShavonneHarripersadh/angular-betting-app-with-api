@@ -1,0 +1,14 @@
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\bin\Release\netcoreapp2.1\SportApi.deps.json
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\bin\Release\netcoreapp2.1\SportApi.runtimeconfig.json
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\bin\Release\netcoreapp2.1\SportApi.runtimeconfig.dev.json
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\bin\Release\netcoreapp2.1\SportApi.dll
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\bin\Release\netcoreapp2.1\SportApi.pdb
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\obj\Release\netcoreapp2.1\SportApi.csprojAssemblyReference.cache
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\obj\Release\netcoreapp2.1\SportApi.csproj.CoreCompileInputs.cache
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\obj\Release\netcoreapp2.1\SportApi.RazorAssemblyInfo.cache
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\obj\Release\netcoreapp2.1\SportApi.RazorAssemblyInfo.cs
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\obj\Release\netcoreapp2.1\SportApi.AssemblyInfoInputs.cache
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\obj\Release\netcoreapp2.1\SportApi.AssemblyInfo.cs
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\obj\Release\netcoreapp2.1\SportApi.RazorTargetAssemblyInfo.cache
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\obj\Release\netcoreapp2.1\SportApi.dll
+C:\Users\ShavonneH\source\repos\SportApi\SportApi\obj\Release\netcoreapp2.1\SportApi.pdb
